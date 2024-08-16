@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders corectly 1`] = `
+<Text
+  style={
+    {
+      "color": "#000000",
+      "fontFamily": "Roboto-Bold",
+      "fontSize": 64,
+      "fontWeight": "700",
+    }
+  }
+>
+  Test Title
+</Text>
+`;

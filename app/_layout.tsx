@@ -19,7 +19,7 @@ const RootLayout = () => {
     }
   }, [loaded, error]);
 
-  if (loaded && !error) {
+  if (!loaded && !error) {
     return <Spinner size="large" />;
   }
 
