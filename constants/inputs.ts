@@ -17,7 +17,7 @@ export const INPUTS: InputField[] = [
     label: "Loan Amount",
     placeholder: "UGX",
     type: "decimal-pad",
-    name: "",
+    name: "loanAmount",
   },
   {
     label: "Loan Purpose",
@@ -26,3 +26,10 @@ export const INPUTS: InputField[] = [
     name: "loanPurpose",
   },
 ];
+
+export const INITIAL_VALUES = {
+  fullName: { value: "", error: "" },
+  email: { value: "", error: "" },
+  loanAmount: { value: "", error: "" },
+  loanPurpose: { value: "", error: "" },
+};

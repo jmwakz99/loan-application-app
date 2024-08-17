@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 
 import Spinner from "@/components/Spinner";
+import LoanApplicationProvider from "@/context/LoanApplicationContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,14 +27,16 @@ const RootLayout = () => {
   }
 
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="loan-application" />
-      <Stack.Screen name="index" />
-    </Stack>
+    <LoanApplicationProvider>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="loan-application" />
+        <Stack.Screen name="index" />
+      </Stack>
+    </LoanApplicationProvider>
   );
 };
 

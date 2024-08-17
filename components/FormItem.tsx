@@ -9,6 +9,7 @@ type Props = {
   onInputChange?: (value: string, name: string) => void;
   inputType?: KeyboardType;
   name: string;
+  value: string;
 };
 
 const FormItem: FC<Props> = ({
@@ -18,6 +19,7 @@ const FormItem: FC<Props> = ({
   onInputChange = (value: string, name: string) => {},
   inputType = "default",
   name,
+  value,
 }) => {
   return (
     <View style={styles.formItemContainer}>
@@ -29,6 +31,7 @@ const FormItem: FC<Props> = ({
         style={styles.formItemInput}
         autoComplete="off"
         keyboardType={inputType}
+        value={value}
       />
       {errorMessage && <Text style={styles.formItemError}>{errorMessage}</Text>}
     </View>
