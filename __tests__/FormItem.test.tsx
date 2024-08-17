@@ -10,6 +10,7 @@ it("should render correctly", () => {
     placeholder: "Test placeholder",
     errorMessage: "Test error message",
     onInputChange: onInputChangeMock,
+    name: "test-name",
   };
 
   const formItem = render(<FormItem {...props} />);
@@ -25,11 +26,12 @@ it("should call onInputChange when input changes", () => {
     placeholder: "Test placeholder",
     errorMessage: "Test error message",
     onInputChange: onInputChangeMock,
+    name: "test-name",
   };
 
   const { getByPlaceholderText } = render(<FormItem {...props} />);
 
   fireEvent.changeText(getByPlaceholderText("Test placeholder"), "Test input");
 
-  expect(onInputChangeMock).toHaveBeenCalledWith("Test input");
+  expect(onInputChangeMock).toHaveBeenCalledWith("Test input", "test-name");
 });

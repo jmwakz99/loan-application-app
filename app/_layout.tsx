@@ -31,6 +31,7 @@ const RootLayout = () => {
         headerShown: false,
       }}
     >
+      <Stack.Screen name="loan-application" />
       <Stack.Screen name="index" />
     </Stack>
   );

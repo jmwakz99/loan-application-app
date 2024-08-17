@@ -1,27 +1,34 @@
 import { styles } from "@/styles/formItem";
 import { FC } from "react";
-import { Text, TextInput, View } from "react-native";
+import { KeyboardType, Text, TextInput, View } from "react-native";
 
 type Props = {
   label: string;
   placeholder: string;
   errorMessage?: string;
-  onInputChange?: (value: string) => void;
+  onInputChange?: (value: string, name: string) => void;
+  inputType?: KeyboardType;
+  name: string;
 };
 
 const FormItem: FC<Props> = ({
   label,
   placeholder,
   errorMessage = "",
-  onInputChange = (_: string) => {},
+  onInputChange = (value: string, name: string) => {},
+  inputType = "default",
+  name,
 }) => {
   return (
     <View style={styles.formItemContainer}>
       <Text style={styles.formItemLabel}>{label}</Text>
+
       <TextInput
         placeholder={placeholder}
-        onChangeText={onInputChange}
+        onChangeText={(value) => onInputChange(value, name)}
         style={styles.formItemInput}
+        autoComplete="off"
+        keyboardType={inputType}
       />
       {errorMessage && <Text style={styles.formItemError}>{errorMessage}</Text>}
     </View>
