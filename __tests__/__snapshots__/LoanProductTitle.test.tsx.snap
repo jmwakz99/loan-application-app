@@ -6,7 +6,7 @@ exports[`It renders corectly 1`] = `
     {
       "color": "#000000",
       "fontFamily": "",
-      "fontSize": 64,
+      "fontSize": 40,
       "fontWeight": "bold",
     }
   }

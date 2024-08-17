@@ -20,6 +20,8 @@ const buttonInnerContainer: Styles = {
   ...buttonOuterContainer,
   flexDirection: "row",
   paddingHorizontal: actuatedNormalize(4),
+  borderWidth: 1,
+  borderColor: COLORS.primary700,
 };
 
 const buttonText: Styles = {
@@ -38,7 +40,7 @@ const buttonSmallText: Styles = {
 const outlinedButton: Styles = {
   backgroundColor: "transparent",
   borderColor: COLORS.primary700,
-  borderWidth: actuatedNormalize(1),
+  borderWidth: 1,
   borderRadius: actuatedNormalize(20),
 };
 const outlinedButtonText: Styles = {

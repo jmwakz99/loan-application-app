@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<View>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "fontFamily": "Inter-SemiBold",
+        "fontSize": 20,
+        "fontWeight": "500",
+      }
+    }
+  >
+    Maximum Amount:
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#30C2E3",
+        "fontFamily": "Inter-SemiBold",
+        "fontSize": 48,
+        "fontWeight": "500",
+      }
+    }
+  >
+    $
+    1000
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#000000",
+        "fontFamily": "",
+        "fontSize": 22,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Interest: 
+    5
+    %
+  </Text>
+</View>
+`;

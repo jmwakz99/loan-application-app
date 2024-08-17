@@ -7,7 +7,7 @@ import { INPUTS } from "@/constants/inputs";
 import FormItem from "@/components/FormItem";
 import Button from "@/components/Button";
 import useForm from "@/hooks/useForm";
-import { isEmaillValid } from "@/utils/common";
+import { isEmailValid } from "@/utils/common";
 import { LoanApplicationContext } from "@/context/LoanApplicationContext";
 import { useNavigation } from "expo-router";
 
@@ -50,7 +50,7 @@ const LoanApplication: FC = () => {
   const onInputChangeHandler = (value: string, name: string) => {
     if (!value) {
       handleChange(name, { value, error: "This field is required" });
-    } else if (name === "email" && !isEmaillValid(value)) {
+    } else if (name === "email" && !isEmailValid(value)) {
       handleChange(name, { value, error: "Please enter a valid email" });
     } else if (name === "loanAmount" && parseInt(value) <= 0) {
       handleChange(name, {

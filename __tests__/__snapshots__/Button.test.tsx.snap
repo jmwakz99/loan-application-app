@@ -56,7 +56,9 @@ exports[`it renders correctly 1`] = `
           {
             "alignItems": "center",
             "backgroundColor": "#30C2E3",
+            "borderColor": "#30C2E3",
             "borderRadius": 40,
+            "borderWidth": 1,
             "flexDirection": "row",
             "height": 92,
             "justifyContent": "center",

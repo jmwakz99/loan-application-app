@@ -9,7 +9,7 @@ export const INPUTS: InputField[] = [
   },
   {
     label: "Email",
-    placeholder: "yourname@",
+    placeholder: "yourname@example.com",
     type: "default",
     name: "email",
   },

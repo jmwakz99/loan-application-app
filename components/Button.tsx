@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { ButtonVariant, IconName, Size } from "@/types/global";
+import { ButtonVariant, Size } from "@/types/global";
 import { COLORS } from "@/constants/colors";
 import { styles } from "@/styles/button";
 import { globalStyles } from "@/styles/global";
@@ -60,7 +60,7 @@ const Button: FC<Props> = ({
           </Text>
           {iconName && (
             <Ionicons
-              name={iconName as IconName}
+              name={iconName as keyof typeof Ionicons.glyphMap}
               color={variant === "solid" ? COLORS.light : COLORS.primary700}
               size={
                 size === "large" ? actuatedNormalize(24) : actuatedNormalize(12)
