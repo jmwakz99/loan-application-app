@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#30C2E3",
+        "borderRadius": 40,
+        "height": 92,
+        "justifyContent": "center",
+        "paddingHorizontal": 8,
+        "width": 666,
+      },
+      false,
+      false,
+    ]
+  }
+>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={false}
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "#30C2E3",
+            "borderRadius": 40,
+            "flexDirection": "row",
+            "height": 92,
+            "justifyContent": "center",
+            "paddingHorizontal": 8,
+            "width": 666,
+          },
+          false,
+          false,
+          false,
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#FFFF",
+              "fontFamily": "Inter-Bold",
+              "fontSize": 32,
+              "fontWeight": "600",
+              "textAlign": "center",
+            },
+            false,
+            false,
+          ]
+        }
+      >
+        Test label
+      </Text>
+      <Text />
+    </View>
+  </View>
+</View>
+`;
