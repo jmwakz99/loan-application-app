@@ -11,6 +11,8 @@ const RootLayout = () => {
   const [loaded, error] = useFonts({
     "Inter-Regular": require("../assets/fonts/Inter-Regular.ttf"),
     "Roboto-Bold": require("../assets/fonts/Inter-Regular.ttf"),
+    "Inter-SemiBold": require("../assets/fonts/Inter-SemiBold.ttf"),
+    "Inter-Bold": require("../assets/fonts/Inter-Bold.ttf"),
   });
 
   useEffect(() => {

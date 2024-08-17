@@ -6,9 +6,10 @@ import { actuatedNormalize } from "@/utils/responsiveUtils";
 
 const screenTitleText: Styles = {
   fontFamily: "Roboto-Bold",
-  fontWeight: "700",
+  fontWeight: "800",
   fontSize: actuatedNormalize(32),
   color: COLORS.dark,
+  letterSpacing: 1,
 };
 
 export const styles = StyleSheet.create({

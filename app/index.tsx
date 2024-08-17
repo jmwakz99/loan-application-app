@@ -1,6 +1,7 @@
 import { View } from "react-native";
 
 import ScreenTitle from "@/components/ScreenTitle";
+import Button from "@/components/Button";
 
 export default function Index() {
   return (
@@ -12,6 +13,7 @@ export default function Index() {
       }}
     >
       <ScreenTitle title="Apply for a loan" />
+      <Button label="Learn More " />
     </View>
   );
 }
