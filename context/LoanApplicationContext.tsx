@@ -1,8 +1,13 @@
-import { createContext, useMemo, useReducer } from "react";
+import { createContext, useCallback, useMemo, useReducer } from "react";
 
-import { LoanApplicationCtx, LoanApplicationPayload } from "@/types/global";
+import {
+  LoanApplicationCtx,
+  LoanApplicationPayload,
+  ProcessStatus,
+} from "@/types/global";
 import { loanApplicationReducer } from "@/reducers/loanApplicationReducer";
 import loanService from "@/services/loanService";
+import { CLEAR_ERROR, SET_ERROR, SET_STATUS } from "@/constants/actions";
 
 export const LoanApplicationContext = createContext<LoanApplicationCtx>({
   status: "await",
@@ -19,34 +24,46 @@ const LoanApplicationProvider = ({
 }) => {
   const [loanApplicationState, dispatch] = useReducer(loanApplicationReducer, {
     status: "await",
+    errorMessage: "",
   });
 
-  const createLoan = async (loanApplicationPayload: LoanApplicationPayload) => {
-    dispatch({ type: "CREATE_LOAN" });
+  const createLoan = useCallback(
+    async (loanApplicationPayload: LoanApplicationPayload) => {
+      dispatch({ type: "SET_STATUS", payload: "await" });
 
-    try {
-      const res = await loanService.createLoan(loanApplicationPayload);
-      if (res.status === 201) {
-        dispatch({
-          type: "SET_STATUS",
-          payload: "accepted",
-        });
+      try {
+        const res = await loanService.createLoan(loanApplicationPayload);
+        if (res.status === 201) {
+          dispatch({
+            type: SET_STATUS,
+            payload: "accepted",
+          });
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          dispatch({
+            type: SET_ERROR,
+            payload: error.message,
+          });
+        } else {
+          dispatch({
+            type: SET_ERROR,
+            payload: "An unknown error occurred",
+          });
+        }
+        dispatch({ type: SET_STATUS, payload: "rejected" });
       }
-    } catch (error: any) {
-      dispatch({
-        type: "SET_ERROR",
-        payload: error.message,
-      });
-    }
-  };
+    },
+    []
+  );
 
-  const clearError = () => {
-    dispatch({ type: "CLEAR_ERROR" });
-  };
+  const clearError = useCallback(() => {
+    dispatch({ type: CLEAR_ERROR });
+  }, []);
 
-  const setStatus = (status: string) => {
-    dispatch({ type: "SET_STATUS", payload: status });
-  };
+  const setStatus = useCallback((status: ProcessStatus) => {
+    dispatch({ type: SET_STATUS, payload: status });
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -56,7 +73,7 @@ const LoanApplicationProvider = ({
       createLoan,
       clearError,
     }),
-    [loanApplicationState]
+    [loanApplicationState, setStatus, createLoan, clearError]
   );
 
   return (

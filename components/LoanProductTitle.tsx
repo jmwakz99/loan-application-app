@@ -1,6 +1,7 @@
-import { styles } from "@/styles/loanProductTitle";
 import { FC } from "react";
 import { Text } from "react-native";
+
+import { styles } from "@/styles/loanProductTitle";
 
 type Props = {
   title: string;

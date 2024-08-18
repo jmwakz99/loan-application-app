@@ -1,6 +1,7 @@
-import { styles } from "@/styles/formItem";
 import { FC } from "react";
 import { KeyboardType, Text, TextInput, View } from "react-native";
+
+import { styles } from "@/styles/formItem";
 
 type Props = {
   label: string;
@@ -32,6 +33,7 @@ const FormItem: FC<Props> = ({
         autoComplete="off"
         keyboardType={inputType}
         value={value}
+        autoCapitalize="none"
       />
       {errorMessage && <Text style={styles.formItemError}>{errorMessage}</Text>}
     </View>

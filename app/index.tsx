@@ -4,25 +4,43 @@ import { useNavigation } from "expo-router";
 import ScreenTitle from "@/components/ScreenTitle";
 import Button from "@/components/Button";
 import LoanProduct from "@/components/LoanProduct";
-import { styles } from "@/styles";
 import { formatNumberWithCommas } from "@/utils/common";
 import Spinner from "@/components/Spinner";
 import { useLoanQuery } from "@/types/graphql";
+import { Navigation } from "@/types/global";
+import { styles } from "@/styles";
+
+const defaultLoanProducts = [
+  {
+    id: 1,
+    name: "Personal Loan",
+    interestRate: 10,
+    maximumAmount: 100000,
+    loanTerm: 12,
+  },
+  {
+    id: 2,
+    name: "Home Loan",
+    interestRate: 8,
+    maximumAmount: 1000000,
+    loanTerm: 24,
+  },
+];
 
 const Index = () => {
+  const navigation = useNavigation<Navigation>();
+
   const { data, loading } = useLoanQuery();
 
-  const navigation = useNavigation();
-
   const navigationHandler = () => {
-    navigation.navigate("loan-application" as never);
+    navigation.navigate("LoanApplication");
   };
 
   if (loading) {
     return <Spinner size="large" />;
   }
 
-  const loanProducts = data?.loanProducts;
+  const loanProducts = data?.loanProducts ?? defaultLoanProducts;
 
   return (
     <View style={styles.container}>
@@ -36,13 +54,13 @@ const Index = () => {
             <View style={styles.loanProductContainer}>
               <LoanProduct
                 name={item.name}
-                maxLoanAmount={formatNumberWithCommas(item?.maximumAmount ?? 0)}
+                maxLoanAmount={formatNumberWithCommas(item?.maximumAmount)}
                 interestRate={item?.interestRate as number}
-                active={index === 0}
+                active={!index}
               />
             </View>
           )}
-          keyExtractor={(item: LoanProduct) => item?.id?.toString() ?? ""}
+          keyExtractor={(item) => item?.id}
         />
       </View>
       <View style={styles.buttonContainer}>

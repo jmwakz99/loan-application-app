@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { NavigationProp } from "@react-navigation/native";
 import { KeyboardType } from "react-native";
 
 export type Styles = { [key: string]: string | number };
@@ -41,3 +42,10 @@ export type LoanApplicationCtx = {
   errorMessage?: string;
   clearError: () => void;
 };
+
+export type RootStackParamList = {
+  index: undefined;
+  LoanApplication: undefined;
+};
+
+export type Navigation = NavigationProp<RootStackParamList>;

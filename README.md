@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
+# Fintech Loan Application - React Native
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Overview
 
-## Get started
+This project is a React Native mobile application for a fintech company, allowing users to view loan products and apply for loans. It demonstrates skills in frontend and mobile development, code structuring, TypeScript usage, component reusability, and adherence to design principles.
 
-1. Install dependencies
+## Setup Instructions
 
-   ```bash
+1. Clone the repository:
+
+` git clone [your-repo-url] cd [your-repo-name]`
+
+2. Install dependencies:
    npm install
-   ```
 
-2. Start the app
+3. Start the local server:
 
-   ```bash
-    npx expo start
-   ```
+- Navigate to the `server` directory
+- Follow the instructions in the server's README.md file
 
-In the output, you'll find options to open the app in a
+4. Start the React Native app:
+   npm start
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. Use an emulator or scan the QR code with Expo Go to run the app on your device.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Project Structure
 
-## Get a fresh project
+- `components/`: Reusable React components
+- `app/`: Main application screens
+- `services/`: API and GraphQL services
+- `styles/`: Global styles and theme
+- `types/`: TypeScript type definitions
 
-When you're ready, run:
+## Key Features
 
-```bash
-npm run reset-project
-```
+- Fetches and displays loan products using GraphQL
+- Implements a loan application form with REST API submission
+- Responsive design following the provided Figma mockup
+- Type-safe code using TypeScript
+- Error handling and loading states
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Approach and Rationale
 
-## Learn more
+1. **React Native with Expo**: Chosen for rapid development and easy testing across platforms.
 
-To learn more about developing your project with Expo, look at the following resources:
+2. **TypeScript**: Implemented for improved code quality and maintainability.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+3. **GraphQL for Data Fetching**: Used for efficient, type-safe data retrieval of loan products.
 
-## Join the community
+4. **REST API for Form Submission**: Implemented for compatibility with existing backend systems.
 
-Join our community of developers creating universal apps.
+5. **Modular Component Structure**: Enhances reusability and maintainability.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+6. **Styled Components**: Used for component-scoped styling and theme consistency.
+
+7. **React Navigation**: Implemented for smooth navigation between screens.
+
+8. **Form Validation**: Ensures data integrity before submission.
+
+9. **Error Handling**: Improves user experience by gracefully handling potential issues.
+
+10. **Loading States**: Provides visual feedback during asynchronous operations.
+
+## Future Improvements
+
+- Implement unit and integration tests
+- Add offline support for form submissions
+- Enhance accessibility features
+- Implement more advanced state management (e.g., Redux) for scalability

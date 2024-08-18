@@ -1,36 +1,32 @@
 import { FC, useContext, useEffect } from "react";
 import { Alert, View } from "react-native";
+import { useNavigation } from "expo-router";
 
 import ScreenTitle from "@/components/ScreenTitle";
-import { styles } from "@/styles/loanApplication";
 import { INPUTS } from "@/constants/inputs";
 import FormItem from "@/components/FormItem";
 import Button from "@/components/Button";
 import useForm from "@/hooks/useForm";
-import { isEmailValid } from "@/utils/common";
 import { LoanApplicationContext } from "@/context/LoanApplicationContext";
-import { useNavigation } from "expo-router";
+import { Navigation } from "@/types/global";
+import { validateField, validateForm } from "@/utils/forms";
+import { styles } from "@/styles/loanApplication";
+import { STATUSES } from "@/constants/statuses";
 
 const LoanApplication: FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<Navigation>();
 
-  const [values, handleChange] = useForm();
+  const { values, handleChange } = useForm();
+
   const { status, errorMessage, createLoan, clearError } = useContext(
     LoanApplicationContext
   );
 
   const formSubmitHandler = async () => {
-    if (
-      !values.fullName.value ||
-      !values.email.value ||
-      !values.loanAmount.value ||
-      !values.loanPurpose.value ||
-      values.fullName.error ||
-      values.email.error ||
-      values.loanAmount.error ||
-      values.loanPurpose.error
-    ) {
-      Alert.alert("Error", "Please fill in all the fields", [
+    const { fullName, email, loanAmount, loanPurpose } = values;
+
+    if (!validateForm(values)) {
+      Alert.alert("Error", "Please complete all the fields correctly.", [
         { style: "destructive", text: "OK" },
       ]);
 
@@ -38,38 +34,36 @@ const LoanApplication: FC = () => {
     }
 
     const loanApplicationPayload = {
-      full_name: values.fullName.value,
-      email: values.email.value,
-      loan_amount: parseInt(values.loanAmount.value),
-      loan_purpose: values.loanPurpose.value,
+      full_name: fullName.value,
+      email: email.value,
+      loan_amount: Number(loanAmount.value),
+      loan_purpose: loanPurpose.value,
     };
+
+    if (isNaN(loanApplicationPayload.loan_amount)) {
+      Alert.alert("Error", "Please enter a valid loan amount.", [
+        { style: "destructive", text: "OK" },
+      ]);
+      return;
+    }
 
     createLoan(loanApplicationPayload);
   };
 
   const onInputChangeHandler = (value: string, name: string) => {
-    if (!value) {
-      handleChange(name, { value, error: "This field is required" });
-    } else if (name === "email" && !isEmailValid(value)) {
-      handleChange(name, { value, error: "Please enter a valid email" });
-    } else if (name === "loanAmount" && parseInt(value) <= 0) {
-      handleChange(name, {
-        value,
-        error: "Please enter a valid number greater than 0",
-      });
-    } else {
-      handleChange(name, { value, error: "" });
-    }
+    const error = validateField(name, value);
+
+    handleChange(name, { value, error: error });
   };
 
   useEffect(() => {
-    if (status === "accepted") {
+    if (status === STATUSES.ACCEPTED) {
       Alert.alert("Success", "Your loan application has been accepted", [
         { style: "default", text: "OK" },
       ]);
-      navigation.navigate("index" as never);
+      navigation.navigate("index");
       clearError();
-    } else if (status === "rejected") {
+    } else if (status === STATUSES.REJECTED) {
       Alert.alert("Error", errorMessage, [
         { style: "destructive", text: "OK" },
       ]);

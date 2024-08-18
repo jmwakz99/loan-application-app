@@ -4,9 +4,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { ButtonVariant, Size } from "@/types/global";
 import { COLORS } from "@/constants/colors";
+import { actuatedNormalize } from "@/utils/responsiveUtils";
 import { styles } from "@/styles/button";
 import { globalStyles } from "@/styles/global";
-import { actuatedNormalize } from "@/utils/responsiveUtils";
 
 type Props = {
   label: string;

@@ -37,7 +37,7 @@ const RootLayout = () => {
           }}
         >
           <Stack.Screen name="index" />
-          <Stack.Screen name="loan-application" />
+          <Stack.Screen name="LoanApplication" />
         </Stack>
       </LoanApplicationProvider>
     </ApolloProvider>

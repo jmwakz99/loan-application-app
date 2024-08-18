@@ -33,3 +33,16 @@ export const INITIAL_VALUES = {
   loanAmount: { value: "", error: "" },
   loanPurpose: { value: "", error: "" },
 };
+
+export const FIELD_NAMES = {
+  EMAIL: "email",
+  LOAN_AMOUNT: "loanAmount",
+  LOAN_PURPOSE: "loanPurpose",
+  FULL_NAME: "fullName",
+};
+
+export const ERROR_MESSAGES = {
+  REQUIRED: "This field is required",
+  INVALID_EMAIL: "Please enter a valid email",
+  INVALID_LOAN_AMOUNT: "Please enter a valid number greater than 0",
+};

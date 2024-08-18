@@ -1,23 +1,33 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { AxiosError } from "axios";
+import axios, {
+  AxiosError,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 
 import { API_BASE_URL } from "@/constants/urls";
 
-export const coreRequestHandler = (request: AxiosRequestConfig) => {
+type ErrorResponse = {
+  data?: {
+    message?: string;
+  };
+  message?: string;
+};
+
+export const coreRequestHandler = (
+  request: InternalAxiosRequestConfig
+): InternalAxiosRequestConfig => {
+  // Implement any core request handling logic here
   return request;
 };
-export const errorHandler = (error: AxiosError) => {
-  let errorObj = error.response
-    ? JSON.parse(JSON?.stringify(error.response))
-    : "";
 
-  // handle network errors
-  if (!errorObj) {
-    errorObj = error ? JSON.parse(JSON?.stringify(error)) : "";
-  }
+export const errorHandler = (error: AxiosError): Promise<never> => {
+  const errorObj: ErrorResponse = error.response
+    ? JSON.parse(JSON.stringify(error.response))
+    : JSON.parse(JSON.stringify(error));
 
   return Promise.reject({
-    message: errorObj?.data ?? errorObj?.data?.message ?? errorObj?.message,
+    message:
+      errorObj?.data?.message ?? errorObj?.message ?? "An error occurred",
   });
 };
 
@@ -26,15 +36,16 @@ const requestHandler = axios.create({
 });
 
 requestHandler.interceptors.request.use(
-  (request) => {
-    coreRequestHandler(request);
-    return request;
+  (request: InternalAxiosRequestConfig) => {
+    return coreRequestHandler(request);
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    return Promise.reject(error);
+  }
 );
 
 requestHandler.interceptors.response.use(
-  (response) => response,
+  (response: AxiosResponse) => response,
   (error: AxiosError) => errorHandler(error)
 );
 

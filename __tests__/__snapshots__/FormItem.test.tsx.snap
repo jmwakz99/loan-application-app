@@ -20,6 +20,7 @@ exports[`FormItem snapshot 1`] = `
     Test label
   </Text>
   <TextInput
+    autoCapitalize="none"
     autoComplete="off"
     keyboardType="default"
     onChangeText={[Function]}
