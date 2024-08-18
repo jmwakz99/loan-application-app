@@ -1,4 +1,4 @@
-import requestHandler from "@/api/request";
+import requestHandler from "@/services/request";
 import { API_BASE_URL } from "@/constants/urls";
 import { LoanApplicationPayload } from "@/types/global";
 

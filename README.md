@@ -2,13 +2,14 @@
 
 ## Project Overview
 
-This project is a React Native mobile application for a fintech company, allowing users to view loan products and apply for loans. It demonstrates skills in frontend and mobile development, code structuring, TypeScript usage, component reusability, and adherence to design principles.
+This project is a React Native mobile application for a fintech company, allowing users to view loan products and apply for loans.
 
 ## Setup Instructions
 
 1. Clone the repository:
 
-` git clone [your-repo-url] cd [your-repo-name]`
+` git clone [https://github.com/jmwakz99/loan-application-app] cd [loan-application-app
+Public]`
 
 2. Install dependencies:
    npm install
@@ -25,11 +26,20 @@ This project is a React Native mobile application for a fintech company, allowin
 
 ## Project Structure
 
-- `components/`: Reusable React components
+- `__tests__/`: All Unit tests
 - `app/`: Main application screens
-- `services/`: API and GraphQL services
-- `styles/`: Global styles and theme
+- `assets/`: Images and icons
+- `components/`: Reusable React components
+- `constants/`: For code clarity and consistency
+- `context/`: Context providers to manage global state
+- `hooks/`: Custom React hooks
+- `lib/`: Libraries and dependencies
+- `reducers/`: To manage context state
+- `server/`: Server setup and configuration
+- `services/`: Services for API calls
+- `styles/`: Handle all application styles
 - `types/`: TypeScript type definitions
+- `utils/`: Utility functions and helpers
 
 ## Key Features
 
@@ -47,23 +57,29 @@ This project is a React Native mobile application for a fintech company, allowin
 
 3. **GraphQL for Data Fetching**: Used for efficient, type-safe data retrieval of loan products.
 
-4. **REST API for Form Submission**: Implemented for compatibility with existing backend systems.
+4. **GraphQL Codegen**: Facilitates code generation from GraphQL schema.
 
-5. **Modular Component Structure**: Enhances reusability and maintainability.
+5. **REST API for Form Submission**: Implemented for compatibility with existing backend systems.
 
-6. **Styled Components**: Used for component-scoped styling and theme consistency.
+6. **Modular Component Structure**: Enhances reusability and maintainability.
 
-7. **React Navigation**: Implemented for smooth navigation between screens.
+7. **React Native's StyleSheet **: Used for styling, ensuring consistency and ease of maintenance.
 
-8. **Form Validation**: Ensures data integrity before submission.
+8. **React Navigation**: Implemented for smooth navigation between screens.
 
-9. **Error Handling**: Improves user experience by gracefully handling potential issues.
+9. **Form Validation**: Ensures data integrity before submission.
 
-10. **Loading States**: Provides visual feedback during asynchronous operations.
+10. **Error Handling**: Improves user experience by gracefully handling potential issues.
+
+11. **Loading States**: Provides visual feedback during asynchronous operations.
+12. **Eslint and Prettier**: Ensures consistent code style and readability
+13. **Husky precommit hooks**: Enforces code quality and consistency
+14. **Documentation**: Added comments and documentation to enhance code readability and collaboration.
 
 ## Future Improvements
 
-- Implement unit and integration tests
-- Add offline support for form submissions
+- Styling DRY principles
 - Enhance accessibility features
 - Implement more advanced state management (e.g., Redux) for scalability
+- Implement Storybook for component documentation, testing and team collaboration
+- Refactor the codebase to follow best practices and improve code quality
