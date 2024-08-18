@@ -23,7 +23,10 @@ This project is a React Native mobile application for a fintech company, allowin
 4. Start the React Native app:
    `npm start`
 
-5. Use an emulator or scan the QR code with Expo Go to run the app on your device.
+5. Run unit test:
+   `npm run test`
+
+6. Use an emulator or scan the QR code with Expo Go to run the app on your device.
 
 ## Project Structure
 
