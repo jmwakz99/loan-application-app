@@ -9,10 +9,11 @@ This project is a React Native mobile application for a fintech company, allowin
 1. Clone the repository:
 
 ` git clone [https://github.com/jmwakz99/loan-application-app] cd [loan-application-app
-Public]`
+]`
 
 2. Install dependencies:
-   npm install
+
+   `npm install`
 
 3. Start the local server:
 
@@ -20,7 +21,7 @@ Public]`
 - Follow the instructions in the server's README.md file
 
 4. Start the React Native app:
-   npm start
+   `npm start`
 
 5. Use an emulator or scan the QR code with Expo Go to run the app on your device.
 
