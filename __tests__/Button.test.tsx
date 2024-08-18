@@ -1,42 +1,64 @@
 import { fireEvent, render } from "@testing-library/react-native";
 
 import Button from "@/components/Button";
-import { ButtonVariant } from "@/types/global";
+import { ButtonVariant, IconName, Size } from "@/types/global";
 
-it("it renders correctly", () => {
-  const onPressMock = jest.fn();
+describe("Button", () => {
+  it("it renders correctly", () => {
+    const onPressMock = jest.fn();
 
-  const props = {
-    label: "Test label",
-    iconName: "wifi" as IconName,
-    size: "large" as Size,
-    variant: "solid" as ButtonVariant,
-    loading: false,
-    disabled: false,
-    onPress: onPressMock,
-  };
+    const props = {
+      label: "Test label",
+      iconName: "wifi" as IconName,
+      size: "large" as Size,
+      variant: "solid" as ButtonVariant,
+      loading: false,
+      disabled: false,
+      onPress: onPressMock,
+    };
 
-  const button = render(<Button {...props} />);
+    const { getByText } = render(<Button {...props} />);
 
-  expect(button).toMatchSnapshot();
-});
+    const textLabel = getByText("Test label");
 
-it("should call onPress when button is pressed", () => {
-  const onPressMock = jest.fn();
+    expect(textLabel).toBeTruthy();
+  });
 
-  const props = {
-    label: "Test label",
-    iconName: "wifi" as IconName,
-    size: "large" as Size,
-    variant: "solid" as ButtonVariant,
-    loading: false,
-    disabled: false,
-    onPress: onPressMock,
-  };
+  it("should call onPress when button is pressed", () => {
+    const onPressMock = jest.fn();
 
-  const { getByText } = render(<Button {...props} />);
+    const props = {
+      label: "Test label",
+      iconName: "wifi" as IconName,
+      size: "large" as Size,
+      variant: "solid" as ButtonVariant,
+      loading: false,
+      disabled: false,
+      onPress: onPressMock,
+    };
 
-  fireEvent.press(getByText("Test label"));
+    const { getByText } = render(<Button {...props} />);
 
-  expect(onPressMock).toHaveBeenCalledTimes(1);
+    fireEvent.press(getByText("Test label"));
+
+    expect(onPressMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("snapshot", () => {
+    const onPressMock = jest.fn();
+
+    const props = {
+      label: "Test label",
+      iconName: "wifi" as IconName,
+      size: "large" as Size,
+      variant: "solid" as ButtonVariant,
+      loading: false,
+      disabled: false,
+      onPress: onPressMock,
+    };
+
+    const button = render(<Button {...props} />).toJSON();
+
+    expect(button).toMatchSnapshot();
+  });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it renders correctly 1`] = `
+exports[`Button snapshot 1`] = `
 <View
   style={
     [
@@ -88,7 +88,29 @@ exports[`it renders correctly 1`] = `
       >
         Test label
       </Text>
-      <Text />
+      <Text
+        allowFontScaling={false}
+        selectable={false}
+        style={
+          [
+            {
+              "color": "#FFFF",
+              "fontSize": 48,
+            },
+            {
+              "paddingLeft": 14,
+            },
+            {
+              "fontFamily": "ionicons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            {},
+          ]
+        }
+      >
+        
+      </Text>
     </View>
   </View>
 </View>

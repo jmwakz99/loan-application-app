@@ -2,36 +2,62 @@ import { fireEvent, render } from "@testing-library/react-native";
 
 import FormItem from "@/components/FormItem";
 
-it("should render correctly", () => {
-  const onInputChangeMock = jest.fn();
+describe("FormItem", () => {
+  it("it should render correctly", () => {
+    const onInputChangeMock = jest.fn();
 
-  const props = {
-    label: "Test label",
-    placeholder: "Test placeholder",
-    errorMessage: "Test error message",
-    onInputChange: onInputChangeMock,
-    name: "test-name",
-  };
+    const props = {
+      label: "Test label",
+      placeholder: "Test placeholder",
+      errorMessage: "Test error message",
+      onInputChange: onInputChangeMock,
+      name: "test-name",
+      value: "test-value",
+    };
 
-  const formItem = render(<FormItem {...props} />);
+    const { getByPlaceholderText } = render(<FormItem {...props} />);
 
-  expect(formItem).toMatchSnapshot();
-});
+    const formItem = getByPlaceholderText("Test placeholder");
 
-it("should call onInputChange when input changes", () => {
-  const onInputChangeMock = jest.fn();
+    expect(formItem).toBeTruthy();
+  });
 
-  const props = {
-    label: "Test label",
-    placeholder: "Test placeholder",
-    errorMessage: "Test error message",
-    onInputChange: onInputChangeMock,
-    name: "test-name",
-  };
+  it("should call onInputChange when input changes", () => {
+    const onInputChangeMock = jest.fn();
 
-  const { getByPlaceholderText } = render(<FormItem {...props} />);
+    const props = {
+      label: "Test label",
+      placeholder: "Test placeholder",
+      errorMessage: "Test error message",
+      onInputChange: onInputChangeMock,
+      name: "test-name",
+      value: "test-value",
+    };
 
-  fireEvent.changeText(getByPlaceholderText("Test placeholder"), "Test input");
+    const { getByPlaceholderText } = render(<FormItem {...props} />);
 
-  expect(onInputChangeMock).toHaveBeenCalledWith("Test input", "test-name");
+    fireEvent.changeText(
+      getByPlaceholderText("Test placeholder"),
+      "Test input"
+    );
+
+    expect(onInputChangeMock).toHaveBeenCalledWith("Test input", "test-name");
+  });
+
+  it("snapshot", () => {
+    const onInputChangeMock = jest.fn();
+
+    const props = {
+      label: "Test label",
+      placeholder: "Test placeholder",
+      errorMessage: "Test error message",
+      onInputChange: onInputChangeMock,
+      name: "test-name",
+      value: "test-value",
+    };
+
+    const formItem = render(<FormItem {...props} />).toJSON();
+
+    expect(formItem).toMatchSnapshot();
+  });
 });

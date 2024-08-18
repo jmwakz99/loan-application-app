@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correctly 1`] = `
+exports[`FormItem snapshot 1`] = `
 <View
   style={
     {
@@ -37,6 +37,7 @@ exports[`should render correctly 1`] = `
         "width": 594,
       }
     }
+    value="test-value"
   />
   <Text
     style={
