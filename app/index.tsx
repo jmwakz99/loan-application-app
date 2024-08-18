@@ -9,6 +9,7 @@ import Spinner from "@/components/Spinner";
 import { useLoanQuery } from "@/types/graphql";
 import { Navigation } from "@/types/global";
 import { styles } from "@/styles";
+import { COLORS } from "@/constants/colors";
 
 const defaultLoanProducts = [
   {
@@ -37,7 +38,7 @@ const Index = () => {
   };
 
   if (loading) {
-    return <Spinner size="large" />;
+    return <Spinner size="large" color={COLORS.grey700} />;
   }
 
   const loanProducts = data?.loanProducts ?? defaultLoanProducts;
