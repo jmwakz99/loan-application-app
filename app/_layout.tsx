@@ -2,9 +2,11 @@ import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { ApolloProvider } from "@apollo/client";
 
 import Spinner from "@/components/Spinner";
 import LoanApplicationProvider from "@/context/LoanApplicationContext";
+import client from "@/lib/apolloClient";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,16 +29,18 @@ const RootLayout = () => {
   }
 
   return (
-    <LoanApplicationProvider>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="loan-application" />
-        <Stack.Screen name="index" />
-      </Stack>
-    </LoanApplicationProvider>
+    <ApolloProvider client={client}>
+      <LoanApplicationProvider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="loan-application" />
+        </Stack>
+      </LoanApplicationProvider>
+    </ApolloProvider>
   );
 };
 

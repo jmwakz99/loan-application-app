@@ -38,10 +38,10 @@ const LoanApplication: FC = () => {
     }
 
     const loanApplicationPayload = {
-      fullName: values.fullName.value,
+      full_name: values.fullName.value,
       email: values.email.value,
-      loanAmount: parseInt(values.loanAmount.value),
-      loanPurpose: values.loanPurpose.value,
+      loan_amount: parseInt(values.loanAmount.value),
+      loan_purpose: values.loanPurpose.value,
     };
 
     createLoan(loanApplicationPayload);
@@ -68,6 +68,7 @@ const LoanApplication: FC = () => {
         { style: "default", text: "OK" },
       ]);
       navigation.navigate("index" as never);
+      clearError();
     } else if (status === "rejected") {
       Alert.alert("Error", errorMessage, [
         { style: "destructive", text: "OK" },

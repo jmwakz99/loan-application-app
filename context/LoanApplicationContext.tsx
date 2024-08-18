@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useMemo, useReducer } from "react";
 
 import { LoanApplicationCtx, LoanApplicationPayload } from "@/types/global";
 import { loanApplicationReducer } from "@/reducers/loanApplicationReducer";
@@ -25,7 +25,13 @@ const LoanApplicationProvider = ({
     dispatch({ type: "CREATE_LOAN" });
 
     try {
-      await loanService.createLoan(loanApplicationPayload);
+      const res = await loanService.createLoan(loanApplicationPayload);
+      if (res.status === 201) {
+        dispatch({
+          type: "SET_STATUS",
+          payload: "accepted",
+        });
+      }
     } catch (error: any) {
       dispatch({
         type: "SET_ERROR",
@@ -38,12 +44,20 @@ const LoanApplicationProvider = ({
     dispatch({ type: "CLEAR_ERROR" });
   };
 
-  const value = {
-    status: loanApplicationState.status,
-    errorMessage: loanApplicationState.errorMessage,
-    createLoan,
-    clearError,
+  const setStatus = (status: string) => {
+    dispatch({ type: "SET_STATUS", payload: status });
   };
+
+  const value = useMemo(
+    () => ({
+      status: loanApplicationState.status,
+      errorMessage: loanApplicationState.errorMessage,
+      setStatus,
+      createLoan,
+      clearError,
+    }),
+    [loanApplicationState]
+  );
 
   return (
     <LoanApplicationContext.Provider value={value}>

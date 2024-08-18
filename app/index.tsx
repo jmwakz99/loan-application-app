@@ -6,13 +6,24 @@ import Button from "@/components/Button";
 import LoanProduct from "@/components/LoanProduct";
 import { styles } from "@/styles";
 import { formatNumberWithCommas } from "@/utils/common";
+import Spinner from "@/components/Spinner";
+import { useLoanQuery } from "@/types/graphql";
 
 const Index = () => {
+  const { data, loading } = useLoanQuery();
+
   const navigation = useNavigation();
 
   const navigationHandler = () => {
     navigation.navigate("loan-application" as never);
   };
+
+  if (loading) {
+    return <Spinner size="large" />;
+  }
+
+  const loanProducts = data?.loanProducts;
+
   return (
     <View style={styles.container}>
       <View style={styles.screenTitle}>
@@ -20,17 +31,18 @@ const Index = () => {
       </View>
       <View style={styles.listContainer}>
         <FlatList
-          data={[1, 2, 3]}
+          data={loanProducts as any}
           renderItem={({ item, index }) => (
             <View style={styles.loanProductContainer}>
               <LoanProduct
-                maxLoanAmount={formatNumberWithCommas(500000)}
-                interestRate={3}
+                name={item.name}
+                maxLoanAmount={formatNumberWithCommas(item?.maximumAmount ?? 0)}
+                interestRate={item?.interestRate as number}
                 active={index === 0}
               />
             </View>
           )}
-          keyExtractor={(item) => item.toString()}
+          keyExtractor={(item: LoanProduct) => item?.id?.toString() ?? ""}
         />
       </View>
       <View style={styles.buttonContainer}>

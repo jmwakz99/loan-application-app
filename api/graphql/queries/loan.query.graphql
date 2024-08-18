@@ -1,0 +1,8 @@
+query Loan {
+  loanProducts {
+    id
+    name
+    interestRate
+    maximumAmount
+  }
+}

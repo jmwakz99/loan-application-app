@@ -3,6 +3,7 @@ import { render } from "@testing-library/react-native";
 import LoanCondition from "@/components/LoanCondition";
 it("it renders corrrectly", () => {
   const props = {
+    name: "Test Loan",
     maxLoanAmount: 1000,
     interestRate: 5,
     active: false,

@@ -7,16 +7,22 @@ import Button from "./Button";
 import { styles } from "@/styles/LoanProduct";
 
 type Props = {
+  name: string;
   maxLoanAmount: number | string;
   interestRate: number;
   active: boolean;
 };
 
-const LoanProduct: FC<Props> = ({ maxLoanAmount, interestRate, active }) => {
+const LoanProduct: FC<Props> = ({
+  name,
+  maxLoanAmount,
+  interestRate,
+  active,
+}) => {
   return (
     <View style={[styles.container, active && styles.active]}>
       <View style={styles.titleContainer}>
-        <LoanProductTitle title="Personal Loan" />
+        <LoanProductTitle title={name} />
       </View>
       <View style={styles.conditionContainer}>
         <LoanCondition

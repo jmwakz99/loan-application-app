@@ -26,10 +26,10 @@ export type FormValues = {
 };
 
 export type LoanApplicationPayload = {
-  fullName: string;
+  full_name: string;
   email: string;
-  loanAmount: number;
-  loanPurpose: string;
+  loan_amount: number;
+  loan_purpose: string;
 };
 
 export type ProcessStatus = "await" | "processing" | "accepted" | "rejected";
