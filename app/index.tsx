@@ -9,7 +9,7 @@ import Spinner from "@/components/Spinner";
 import { useLoanQuery } from "@/types/graphql";
 import { Navigation } from "@/types/global";
 import { styles } from "@/styles";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/theme";
 
 const defaultLoanProducts = [
   {

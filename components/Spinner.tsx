@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ActivityIndicator, View } from "react-native";
 
 import { styles } from "@/styles/spinner";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/theme";
 import { Size } from "@/types/global";
 
 type Props = {

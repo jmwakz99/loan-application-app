@@ -1,7 +1,7 @@
 import { StyleSheet, Platform } from "react-native";
 
 import { Styles } from "@/types/global";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/theme";
 import { actuatedNormalize } from "@/utils/responsiveUtils";
 
 const screenTitleText: Styles = {

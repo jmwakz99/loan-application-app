@@ -5,7 +5,7 @@ import {
   actuatedNormalize,
   actuatedNormalizeVertical,
 } from "@/utils/responsiveUtils";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/theme";
 
 const container: Styles = {
   width: actuatedNormalize(298),

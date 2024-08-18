@@ -3,7 +3,7 @@ import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { ButtonVariant, Size } from "@/types/global";
-import { COLORS } from "@/constants/colors";
+import { COLORS } from "@/constants/theme";
 import { actuatedNormalize } from "@/utils/responsiveUtils";
 import { styles } from "@/styles/button";
 import { globalStyles } from "@/styles/global";
